@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize } from "lucide-react";
 
 import Heading from "./components/Heading";
 import Text from "./components/Text";
@@ -16,6 +16,8 @@ import {
 export default function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const frameRef = useRef<HTMLDivElement>(null);
 
   const goToNext = () => {
     if (currentSlide < SLIDE_COUNT - 1) {
@@ -51,8 +53,30 @@ export default function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentSlide]);
 
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, []);
+
+  const toggleFullscreen = async () => {
+    if (!frameRef.current) return;
+    try {
+      if (document.fullscreenElement) {
+        await document.exitFullscreen();
+      } else {
+        await frameRef.current.requestFullscreen();
+      }
+    } catch {
+      // Browser may block fullscreen without user gesture
+    }
+  };
+
   return (
     <div
+      ref={frameRef}
       id="presentation-frame"
       className="h-screen w-screen bg-[#111111] text-white flex flex-col justify-between selection:bg-[#FF4A22] selection:text-white relative font-sans overflow-hidden py-3 px-4 sm:px-8 md:px-12 mr-auto ml-auto"
     >
@@ -687,7 +711,20 @@ export default function App() {
               Симоненко Леонид, Костюк Степан, Никита, Расул, Александр | ПрИ-301/302
             </p>
           </div>
-          <div className="flex items-stretch border border-white h-10 bg-black min-w-[260px] self-end">
+          <div className="flex items-stretch gap-2 self-end">
+            <button
+              onClick={toggleFullscreen}
+              className="border border-white h-10 px-3 flex items-center justify-center gap-1.5 font-mono text-[10px] font-black uppercase tracking-wider bg-black text-white hover:bg-[#FF4A22] hover:border-[#FF4A22] transition-all rounded-none"
+              title={isFullscreen ? "Выйти из полноэкранного режима" : "Открыть на весь экран"}
+            >
+              {isFullscreen ? (
+                <Minimize className="w-3.5 h-3.5 stroke-[3px]" />
+              ) : (
+                <Maximize className="w-3.5 h-3.5 stroke-[3px]" />
+              )}
+              <span className="hidden sm:inline">{isFullscreen ? "EXIT" : "FULL"}</span>
+            </button>
+            <div className="flex items-stretch border border-white h-10 bg-black min-w-[260px]">
             <button
               onClick={goToPrev}
               disabled={currentSlide === 0}
@@ -719,6 +756,7 @@ export default function App() {
               <span>вперед</span>
               <ChevronRight className="w-3.5 h-3.5 ml-1 stroke-[3px]" />
             </button>
+            </div>
           </div>
         </div>
       </footer>
