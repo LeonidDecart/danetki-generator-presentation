@@ -130,7 +130,7 @@ export default function App() {
                 </h1>
                 <div className="border-l-4 sm:border-l-8 border-[#FF4A22] pl-4 sm:pl-6 py-1">
                   <p className="text-base sm:text-lg md:text-xl font-bold font-sans text-zinc-100 max-w-2xl leading-snug">
-                    Автоматизированная SaaS-система. Превращаем реальные истории в вовлекающий контент для медиа-рынка.
+                    Облачное веб-приложение с микросервисной архитектурой. Доступ через браузер — без установки. Превращаем реальные истории в вовлекающий контент.
                   </p>
                 </div>
                 <div className="flex items-center space-x-2 pt-2 text-zinc-500 text-[10px] font-mono uppercase tracking-wider">
@@ -229,10 +229,10 @@ export default function App() {
                 </div>
                 <div className="border-2 border-[#FF4A22] bg-black p-5 sm:p-6 md:p-8 flex flex-col justify-center space-y-4 rounded-none min-h-[200px]">
                   <h3 className="text-base sm:text-lg md:text-xl font-black uppercase text-white tracking-tight">
-                    НАШ SAAS-КОНВЕЙЕР
+                    НАШ ОБЛАЧНЫЙ КОНВЕЙЕР
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">
-                    Zero-prompting. Пользователь делает 1 клик. Парсер сам находит историю. Скрытая оркестрация защищает от галлюцинаций. Выдача строго в JSON.
+                    Zero-prompting. 1 клик в web-панели. Парсер, оркестрация и JSON-выдача на VPS. SaaS-подобная доставка: пользователь не ставит софт — только заходит на сайт.
                   </p>
                 </div>
               </div>
@@ -615,11 +615,11 @@ export default function App() {
                       ПРОДУКТ (WIN)
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">
-                      Модель подписки SaaS (от 5 000 ₽/мес). Генерация через DeepSeek API — предсказуемые затраты при высокой марже SaaS.
+                      Учебный MVP: cloud-hosted web app (VPS, Docker). Подписки и мультитенантности нет — это этап коммерческого SaaS. Затраты на DeepSeek API предсказуемы.
                     </p>
                   </div>
                   <span className="font-mono text-[9px] text-zinc-400 uppercase font-black tracking-widest">
-                    SAAS LEVERAGE // HIGH MARGIN
+                    CLOUD HOSTED // MVP SCOPE
                   </span>
                 </div>
               </div>
@@ -649,11 +649,15 @@ export default function App() {
                     title: "ПАРСИНГ: ИЗМЕНЕНИЕ ВЕРСТКИ ДОНОРОВ",
                     text: "Риск: Сайты меняют структуру (ошибка 404), ломая сбор данных. Решение: Паттерн Registry (ScraperRegistry), позволяющий за 5 минут оркестрировать новые селекторы.",
                   },
+                  {
+                    title: "SCOPE: НЕ КЛАССИЧЕСКИЙ SAAS",
+                    text: "Формально это онлайн-сервис, а не Notion/Slack-уровень SaaS. Есть: браузер, авторизация, деплой на сервере. Нет: биллинг, мультитенантность, self-service для B2B. Для учебного проекта — нормально.",
+                  },
                 ].map((block, idx) => (
                   <div
                     key={block.title}
                     className={`border-2 p-5 sm:p-6 rounded-none ${
-                      idx === 0 ? "border-white/20 bg-black" : "border-[#FF4A22] bg-[#111111]"
+                      idx === 0 ? "border-white/20 bg-black" : idx === 1 ? "border-[#FF4A22] bg-[#111111]" : "border-white/20 bg-[#0a0a0a]"
                     }`}
                   >
                     <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest block mb-2">

@@ -1,6 +1,6 @@
 # Генератор данеток — презентация
 
-Интерактивная B2B-презентация (14 слайдов) SaaS-конвейера для автоматической генерации данеток. Стиль: Brutalism / Swiss Design.
+Интерактивная B2B-презентация (14 слайдов) облачного веб-сервиса для автоматической генерации данеток. Стиль: Brutalism / Swiss Design.
 
 **Онлайн:** [leoniddecart.github.io/danetki-generator-presentation](https://leoniddecart.github.io/danetki-generator-presentation/)
 
@@ -14,7 +14,7 @@
 |---|-----|------|
 | 01 | COVER | Титул |
 | 02 | PROBLEM | Проблема рынка |
-| 03 | EDGE | Скрытое преимущество (SaaS vs чат-боты) |
+| 03 | EDGE | Скрытое преимущество (облачный конвейер vs чат-боты) |
 | 04 | FLOW | User Flow и UI-мокап |
 | 05 | AI | Роль LLM |
 | 06 | DATA | Данные для ML |
