@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu, TrendingUp, Server, Wallet, Users } from "lucide-react";
 
 import Heading from "./components/Heading";
 import Text from "./components/Text";
@@ -706,78 +706,177 @@ export default function App() {
             </div>
           </Slide>
 
-          {/* SLIDE 12: Economics WIN-WIN */}
+          {/* SLIDE 12: Economics Dashboard */}
           <Slide isActive={currentSlide === 11} slideIndex={11} direction={direction}>
-            <div id="slide-12-layout" className="w-full flex flex-col space-y-3 sm:space-y-4">
-              <div className="border-b border-white/20 pb-2">
+            <div id="slide-12-layout" className="w-full flex flex-col space-y-3">
+              <div className="border-b border-white/20 pb-2 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                   <GlossaryText text="ЭКОНОМИКА: ДОХОДЫ vs ЗАТРАТЫ" />
                 </Heading>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/20 rounded-none">
-                {[
-                  {
-                    tag: "// КЛИЕНТ (WIN)",
-                    bg: "bg-[#141414]",
-                    border: "md:border-r border-b md:border-b-0 border-white/20",
-                    rows: [
-                      { val: "−50 000 ₽", label: "ЭКОНОМИЯ / КОПИРАЙТЕР", desc: "Отказ от фрилансера или штатного редактора контента." },
-                      { val: "+25 000 ₽", label: "РОСТ РЕКЛАМЫ", desc: "×3 публикаций в неделю → больше показов и CPM в Telegram/ВК." },
-                      { val: "+75 000 ₽", label: "ИТОГО / МЕС", desc: "Чистый эффект для контент-мейкера: экономия + новый доход." },
-                    ],
-                    footer: "ROAS // CLIENT VALUE",
-                  },
-                  {
-                    tag: "// НАШИ ЗАТРАТЫ (COGS)",
-                    bg: "bg-black",
-                    border: "md:border-r border-b md:border-b-0 border-white/20",
-                    rows: [
-                      { val: "~1 200 ₽", label: "VPS + DOCKER", desc: "Облачный сервер: Gateway, Parser, Worker, Kafka, Redis, PostgreSQL." },
-                      { val: "~800 ₽", label: "DEEPSEEK API", desc: "~500 генераций/мес × ~1,5 ₽ (генерация + LLM-as-a-Judge + Retry)." },
-                      { val: "~2 000 ₽", label: "ИТОГО / МЕС", desc: "Полная стоимость инфраструктуры одного MVP-инстанса." },
-                    ],
-                    footer: "COGS // PREDICTABLE",
-                  },
-                  {
-                    tag: "// ПРОДУКТ (UNIT ECON)",
-                    bg: "bg-[#111111]",
-                    border: "",
-                    rows: [
-                      { val: "~1,5 ₽", label: "COST / ДАНЕТКА", desc: "Средняя себестоимость одной готовой публикации с учётом ретраев." },
-                      { val: "990 ₽", label: "ПОДПИСКА / КЛИЕНТ", desc: "Целевая цена подписки на этапе Pilot (учебный MVP — бесплатно)." },
-                      { val: "~80%", label: "МАРЖА / 10 КЛ.", desc: "9 900 ₽ выручки − 2 000 ₽ COGS. Окупаемость: 2 клиента." },
-                    ],
-                    footer: "MARGIN // SUBSCRIPTION MODEL",
-                  },
-                ].map((col) => (
-                  <div key={col.tag} className={`p-4 sm:p-5 flex flex-col space-y-3 ${col.bg} ${col.border} rounded-none`}>
-                    <span className="font-mono text-[9px] sm:text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
-                      <GlossaryText text={col.tag} />
+                <div className="flex flex-wrap gap-1.5">
+                  {["MARGIN 80%", "BREAKEVEN: 2 CL", "COGS ~2K", "SUB 990 ₽"].map((badge) => (
+                    <span
+                      key={badge}
+                      className="font-mono text-[7px] sm:text-[8px] font-black uppercase tracking-widest px-2 py-0.5 border border-[#FF4A22]/40 text-[#FF4A22] bg-[#FF4A22]/10"
+                    >
+                      {badge}
                     </span>
-                    {col.rows.map((row) => (
-                      <div key={row.label} className="border-l-4 border-[#FF4A22] pl-3 space-y-0.5">
-                        <div className="text-xl sm:text-2xl font-mono font-black text-white tracking-tighter leading-none">{row.val}</div>
-                        <div className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-400 uppercase tracking-widest">{row.label}</div>
-                        <p className="text-[10px] sm:text-[11px] text-zinc-300 font-bold leading-snug pt-0.5">
-                          <GlossaryText text={row.desc} />
-                        </p>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative border border-white/20 bg-[#0a0a0a] rounded-none overflow-visible">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,74,34,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,74,34,0.04)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+
+                <div className="relative p-3 sm:p-4 md:p-5 space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {[
+                      {
+                        icon: TrendingUp,
+                        label: "КЛИЕНТ / WIN",
+                        value: "+75 000 ₽",
+                        sub: "эффект / месяц",
+                        status: "ROAS // CLIENT VALUE",
+                      },
+                      {
+                        icon: Server,
+                        label: "COGS",
+                        value: "~2 000 ₽",
+                        sub: "затраты / месяц",
+                        status: "VPS + DEEPSEEK // ON",
+                      },
+                      {
+                        icon: Wallet,
+                        label: "ПОДПИСКА",
+                        value: "990 ₽",
+                        sub: "тариф / клиент",
+                        status: "MARGIN // SUBSCRIPTION",
+                      },
+                    ].map((kpi) => (
+                      <div
+                        key={kpi.label}
+                        className="relative border border-white/15 bg-black p-4 flex flex-col justify-between min-h-[110px] rounded-none hover:border-[#FF4A22]/50 transition-colors"
+                      >
+                        <div className="absolute top-0 left-0 w-full h-0.5 bg-[#FF4A22]" />
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest">
+                            {kpi.label}
+                          </span>
+                          <kpi.icon className="w-4 h-4 text-[#FF4A22] shrink-0 opacity-80" strokeWidth={2.5} />
+                        </div>
+                        <div className="pt-2">
+                          <div className="text-2xl sm:text-3xl font-mono font-black text-white tracking-tighter leading-none">
+                            <GlossaryText text={kpi.value} />
+                          </div>
+                          <p className="text-[10px] sm:text-xs text-zinc-400 font-bold mt-1 uppercase tracking-wide">
+                            <GlossaryText text={kpi.sub} />
+                          </p>
+                        </div>
+                        <span className="font-mono text-[7px] sm:text-[8px] text-[#FF4A22]/80 uppercase tracking-widest font-black mt-3">
+                          <GlossaryText text={kpi.status} />
+                        </span>
                       </div>
                     ))}
-                    <span className="font-mono text-[8px] text-zinc-500 uppercase font-black tracking-widest mt-auto pt-1">
-                      <GlossaryText text={col.footer} />
-                    </span>
                   </div>
-                ))}
-              </div>
-              <div className="bg-[#FF4A22] text-white p-3 sm:p-4 border-2 border-[#FF4A22] rounded-none">
-                <p className="font-mono text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider leading-snug">
-                  <GlossaryText text="ROADMAP: MVP (Сбор + Генерация) ➔ PILOT (Автопостинг готовых загадок напрямую в Telegram/ВК)" />
-                </p>
-              </div>
-              <div className="border-2 border-white bg-black text-white p-3 sm:p-4 rounded-none">
-                <p className="font-mono text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider leading-snug">
-                  <GlossaryText text="ROADMAP+: Умный отбор историй. Качество данетки зависит от сырья — мало историй подходят под формат. План: фильтрация на уровне парсера или AI-модуля → до пользователя только лучшие истории и данетки." />
-                </p>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <div className="border border-white/15 bg-black p-4 rounded-none">
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
+                        // CLIENT P&L
+                      </span>
+                      <div className="space-y-2">
+                        {[
+                          { val: "−50 000 ₽", label: "КОПИРАЙТЕР", tone: "text-zinc-400" },
+                          { val: "+25 000 ₽", label: "РОСТ РЕКЛАМЫ", tone: "text-zinc-300" },
+                          { val: "+75 000 ₽", label: "ИТОГО / МЕС", tone: "text-[#FF4A22]" },
+                        ].map((row) => (
+                          <div key={row.label} className="flex items-center justify-between border-b border-white/10 pb-2 last:border-0 last:pb-0">
+                            <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest">
+                              {row.label}
+                            </span>
+                            <span className={`font-mono text-sm sm:text-base font-black tracking-tighter ${row.tone}`}>
+                              {row.val}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="font-mono text-[7px] sm:text-[8px] text-zinc-600 uppercase tracking-widest mt-3">
+                        SAVE → GROW → NET POSITIVE
+                      </p>
+                    </div>
+
+                    <div className="border border-white/15 bg-black p-4 rounded-none">
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
+                        // PRODUCT COSTS
+                      </span>
+                      <div className="space-y-2">
+                        {[
+                          { val: "~1 200 ₽", label: "VPS + DOCKER", width: "w-[60%]" },
+                          { val: "~800 ₽", label: "DEEPSEEK API", width: "w-[40%]" },
+                          { val: "~2 000 ₽", label: "ИТОГО COGS", width: "w-full" },
+                        ].map((row) => (
+                          <div key={row.label} className="space-y-1">
+                            <div className="flex items-center justify-between">
+                              <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest">
+                                <GlossaryText text={row.label} />
+                              </span>
+                              <span className="font-mono text-xs sm:text-sm font-black text-white tracking-tighter">
+                                {row.val}
+                              </span>
+                            </div>
+                            <div className="h-1 bg-zinc-800 rounded-none">
+                              <div className={`h-full bg-[#FF4A22] rounded-none ${row.width}`} />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="font-mono text-[7px] sm:text-[8px] text-zinc-600 uppercase tracking-widest mt-3">
+                        INFRA + INFERENCE = PREDICTABLE COGS
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+                    <div className="lg:col-span-2 border border-[#FF4A22]/30 bg-[#111111] p-3 sm:p-4 rounded-none">
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-2">
+                        // UNIT ECONOMICS
+                      </span>
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                        {[
+                          { step: "~1,5 ₽", icon: Cpu, label: "COST/DANETKA" },
+                          { step: "990 ₽", icon: Wallet, label: "SUB/CLIENT" },
+                          { step: "~80%", icon: TrendingUp, label: "MARGIN 10CL" },
+                          { step: "2 CL", icon: Users, label: "BREAKEVEN" },
+                        ].map((node, idx, arr) => (
+                          <div key={node.label} className="flex items-center gap-1.5 sm:gap-2">
+                            <div className="flex items-center gap-1.5 border border-white/20 bg-black px-2.5 py-2 rounded-none">
+                              <node.icon className="w-3 h-3 text-[#FF4A22] shrink-0" strokeWidth={2.5} />
+                              <div>
+                                <div className="font-mono text-[10px] sm:text-xs font-black text-white leading-none">{node.step}</div>
+                                <div className="font-mono text-[7px] text-zinc-500 uppercase tracking-widest mt-0.5">{node.label}</div>
+                              </div>
+                            </div>
+                            {idx < arr.length - 1 && (
+                              <ChevronRight className="w-3.5 h-3.5 text-[#FF4A22] shrink-0 hidden sm:block" strokeWidth={3} />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="border border-white/15 bg-black p-3 sm:p-4 rounded-none flex flex-col justify-center gap-2">
+                      <span className="font-mono text-[7px] sm:text-[8px] font-black text-[#FF4A22] uppercase tracking-widest">
+                        // ROADMAP
+                      </span>
+                      <p className="font-mono text-[9px] sm:text-[10px] text-zinc-300 font-black uppercase leading-snug">
+                        <GlossaryText text="MVP → PILOT → автопостинг" />
+                      </p>
+                      <p className="font-mono text-[8px] sm:text-[9px] text-zinc-500 font-bold uppercase leading-snug">
+                        <GlossaryText text="ROADMAP+: умный отбор историй на парсере / AI-модуле" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Slide>

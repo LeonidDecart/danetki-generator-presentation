@@ -23,7 +23,7 @@
 | 09 | KAFKA | Kafka vs RabbitMQ |
 | 10 | WORKER | AI Worker: инференс и отказоустойчивость |
 | 11 | METRICS | ML-, системные и бизнес-метрики |
-| 12 | ECON | Экономика: доходы клиента vs затраты продукта |
+| 12 | ECON | Economics dashboard (доходы, COGS, unit econ) |
 | 13 | RISKS | Риски и ограничения |
 | 14 | END | Главный вывод |
 
