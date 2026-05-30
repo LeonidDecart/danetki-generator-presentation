@@ -233,7 +233,7 @@ export default function App() {
                     НАШ ОБЛАЧНЫЙ КОНВЕЙЕР
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">
-                    <GlossaryText text="Zero-prompting. 1 клик в web-панели. Парсер, оркестрация и JSON-выдача на VPS. SaaS-подобная доставка: пользователь не ставит софт — только заходит на сайт." />
+                    <GlossaryText text="Zero-prompting. 1 клик в web-панели. Парсер, оркестрация и JSON-выдача на VPS. Облачная доставка: пользователь не ставит софт — только заходит на сайт." />
                   </p>
                 </div>
               </div>
@@ -652,10 +652,10 @@ export default function App() {
                     border: "",
                     rows: [
                       { val: "~1,5 ₽", label: "COST / ДАНЕТКА", desc: "Средняя себестоимость одной готовой публикации с учётом ретраев." },
-                      { val: "990 ₽", label: "ПОДПИСКА / КЛИЕНТ", desc: "Целевая цена SaaS на этапе Pilot (учебный MVP — бесплатно)." },
+                      { val: "990 ₽", label: "ПОДПИСКА / КЛИЕНТ", desc: "Целевая цена подписки на этапе Pilot (учебный MVP — бесплатно)." },
                       { val: "~80%", label: "МАРЖА / 10 КЛ.", desc: "9 900 ₽ выручки − 2 000 ₽ COGS. Окупаемость: 2 клиента." },
                     ],
-                    footer: "MARGIN // SAAS POTENTIAL",
+                    footer: "MARGIN // SUBSCRIPTION MODEL",
                   },
                 ].map((col) => (
                   <div key={col.tag} className={`p-4 sm:p-5 flex flex-col space-y-3 ${col.bg} ${col.border} rounded-none`}>
@@ -709,8 +709,8 @@ export default function App() {
                     text: "Риск: Сайты меняют структуру (ошибка 404), ломая сбор данных. Решение: Паттерн Registry (ScraperRegistry), позволяющий за 5 минут оркестрировать новые селекторы.",
                   },
                   {
-                    title: "SCOPE: НЕ КЛАССИЧЕСКИЙ SAAS",
-                    text: "Формально это онлайн-сервис, а не Notion/Slack-уровень SaaS. Есть: браузер, авторизация, деплой на сервере. Нет: биллинг, мультитенантность, self-service для B2B. Для учебного проекта — нормально.",
+                    title: "SCOPE: УЧЕБНЫЙ MVP",
+                    text: "Формально это онлайн-сервис, а не Notion/Slack-уровень. Есть: браузер, авторизация, деплой на сервере. Нет: биллинг, мультитенантность, self-service для B2B. Для учебного проекта — нормально.",
                   },
                 ].map((block, idx) => (
                   <div
