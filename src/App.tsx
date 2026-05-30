@@ -826,7 +826,7 @@ export default function App() {
                       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                         {[
                           { icon: Server, label: "СЕРВЕР", value: "~2 000 ₽", sub: "в месяц", note: "хостинг + API", accent: false },
-                          { icon: Code2, label: "РАЗРАБОТКА", value: "~400 000 ₽", sub: "единоразово", note: "создание MVP", accent: true },
+                          { icon: Code2, label: "РАЗРАБОТКА", value: "20 000 ₽", sub: "единоразово", note: "создание MVP", accent: true },
                           { icon: Users, label: "ЗАРПЛАТЫ", value: "~80 000 ₽", sub: "в месяц", note: "5 разработчиков", accent: false },
                           { icon: Wallet, label: "ДОХОД", value: "990 ₽", sub: "с клиента", note: "подписка / мес", accent: false },
                         ].map((kpi) => (
@@ -862,10 +862,10 @@ export default function App() {
                         </span>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
                           {[
-                            { val: "~160 000 ₽", label: "BACKEND", note: "Go, C#, Kafka, PostgreSQL" },
-                            { val: "~100 000 ₽", label: "FRONTEND", note: "веб-панель, UX" },
-                            { val: "~80 000 ₽", label: "ML / AI", note: "промпты, воркер, DeepSeek" },
-                            { val: "~60 000 ₽", label: "DEVOPS", note: "Docker, VPS, деплой" },
+                            { val: "8 000 ₽", label: "BACKEND", note: "Go, C#, Kafka, PostgreSQL" },
+                            { val: "5 000 ₽", label: "FRONTEND", note: "веб-панель, UX" },
+                            { val: "4 000 ₽", label: "ML / AI", note: "промпты, воркер, DeepSeek" },
+                            { val: "3 000 ₽", label: "DEVOPS", note: "Docker, VPS, деплой" },
                           ].map((row) => (
                             <div key={row.label} className="border border-white/15 bg-black p-3 rounded-none">
                               <span className="font-mono text-[8px] font-black text-zinc-500 uppercase tracking-widest block">
@@ -880,10 +880,10 @@ export default function App() {
                         </div>
                         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-white/10 pt-3">
                           <span className="font-mono text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase">
-                            Итого на MVP: ~400 000 ₽ · амортизация ~17 000 ₽/мес (24 мес)
+                            Итого на MVP: 20 000 ₽ · амортизация ~830 ₽/мес (24 мес)
                           </span>
                           <span className="font-mono text-sm sm:text-base font-black text-[#FF4A22] tracking-tighter">
-                            5 DEV × ~2 МЕС
+                            УЧЕБНЫЙ ПРОЕКТ
                           </span>
                         </div>
                       </div>
@@ -927,7 +927,7 @@ export default function App() {
                             {[
                               { val: "~16 000 ₽", label: "НА 1 РАЗРАБОТЧИКА", note: "part-time / месяц" },
                               { val: "~80 000 ₽", label: "КОМАНДА (5 ЧЕЛ.)", note: "ежемесячный ФОТ" },
-                              { val: "~97 000 ₽", label: "ВСЕГО В МЕСЯЦ", note: "зарплаты + аморт. MVP", accent: true },
+                              { val: "~81 000 ₽", label: "ВСЕГО В МЕСЯЦ", note: "зарплаты + аморт. MVP", accent: true },
                             ].map((row) => (
                               <div key={row.label} className="flex items-start justify-between gap-2 border-b border-white/10 pb-2 last:border-0 last:pb-0">
                                 <div>
@@ -971,7 +971,7 @@ export default function App() {
                           ))}
                         </div>
                         <p className="font-mono text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest mt-3">
-                          Полные затраты компании: ~99 000 ₽/мес (сервер 2k + команда 97k) + 400k на MVP
+                          Полные затраты компании: ~83 000 ₽/мес (сервер 2k + команда 81k) + 20k на MVP
                         </p>
                       </div>
                     </>
