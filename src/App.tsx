@@ -539,50 +539,76 @@ export default function App() {
             <div id="slide-11-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  МЕТРИКИ: КАК МЫ ИЗМЕРЯЕМ УСПЕХ
+                  МЕТРИКИ: МОДЕЛЬ ➔ ИНФРА ➔ ПОЛЬЗА
                 </Heading>
               </div>
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-white/20 rounded-none">
-                <div className="p-5 sm:p-6 md:p-8 flex flex-col space-y-6 lg:border-r border-b lg:border-b-0 border-white/20 bg-[#111111]">
-                  <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
-                    // БИЗНЕС-МЕТРИКИ
-                  </span>
-                  {[
-                    {
-                      title: "TIME-TO-MARKET",
-                      text: "Сокращение времени от поиска истории до готового поста: с 3–4 часов до 2 секунд.",
-                    },
-                    {
-                      title: "NPS / РУЧНЫЕ ПРАВКИ",
-                      text: "Метрика качества генерации — % историй, опубликованных клиентом без ручного редактирования текста.",
-                    },
-                  ].map((item) => (
-                    <div key={item.title} className="border-l-4 border-[#FF4A22] pl-4 space-y-1">
-                      <h3 className="text-sm sm:text-base font-black uppercase text-white tracking-tight">{item.title}</h3>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="p-5 sm:p-6 md:p-8 flex flex-col space-y-6 bg-black">
-                  <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
-                    // ML-МЕТРИКИ
-                  </span>
-                  {[
-                    {
-                      title: "CONVERSION RATE ПАРСЕРА",
-                      text: "% собранных статей, успешно прошедших фильтры объема (100–4000) и стоп-слов.",
-                    },
-                    {
-                      title: "LLM JSON VALIDITY",
-                      text: "% ответов нейросети, которые строго соответствуют контракту {open_part, hidden_part} без галлюцинаций.",
-                    },
-                  ].map((item) => (
-                    <div key={item.title} className="border-l-4 border-[#FF4A22] pl-4 space-y-1">
-                      <h3 className="text-sm sm:text-base font-black uppercase text-white tracking-tight">{item.title}</h3>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed">{item.text}</p>
-                    </div>
-                  ))}
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/20 rounded-none">
+                {[
+                  {
+                    tag: "// ML QUALITY",
+                    bg: "bg-[#111111]",
+                    border: "md:border-r border-b md:border-b-0 border-white/20",
+                    items: [
+                      {
+                        title: "LLM-AS-A-JUDGE (1–10)",
+                        text: "Модель-судья оценивает данетку. Quality Gate: score >= 7. Связка «промпт + модель».",
+                      },
+                      {
+                        title: "ACCEPTANCE RATE",
+                        text: "Доля историй, прошедших Quality Gate с первой попытки vs Retry. Показывает стабильность генерации.",
+                      },
+                    ],
+                  },
+                  {
+                    tag: "// SYSTEM HEALTH",
+                    bg: "bg-black",
+                    border: "md:border-r border-b md:border-b-0 border-white/20",
+                    items: [
+                      {
+                        title: "DLQ RATE (KAFKA)",
+                        text: "Доля сообщений, ушедших в Dead Letter Queue после 3 попыток. Сигнал аномалий парсинга или LLM.",
+                      },
+                      {
+                        title: "CACHE HIT RATIO (REDIS)",
+                        text: "Запросы из кэша vs поход в PostgreSQL. Эффективность чтения под нагрузкой.",
+                      },
+                    ],
+                  },
+                  {
+                    tag: "// BUSINESS VALUE",
+                    bg: "bg-[#141414]",
+                    border: "",
+                    items: [
+                      {
+                        title: "HUMAN INTERVENTION RATE",
+                        text: "% данеток без ручных правок перед публикацией. Идеал → 0: production-ready контент.",
+                      },
+                      {
+                        title: "TIME-TO-VALUE",
+                        text: "От потребности до готового поста: с ~2 часов до ~5 секунд. Главная ценность для контент-мейкера.",
+                      },
+                    ],
+                  },
+                ].map((col) => (
+                  <div key={col.tag} className={`p-4 sm:p-5 md:p-6 flex flex-col space-y-4 ${col.bg} ${col.border} rounded-none`}>
+                    <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
+                      {col.tag}
+                    </span>
+                    {col.items.map((item) => (
+                      <div key={item.title} className="border-l-4 border-[#FF4A22] pl-3 space-y-1">
+                        <h3 className="text-xs sm:text-sm font-black uppercase text-white tracking-tight leading-snug">
+                          {item.title}
+                        </h3>
+                        <p className="text-[11px] sm:text-xs text-zinc-300 font-bold leading-relaxed">{item.text}</p>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <div className="bg-[#FF4A22] text-white p-3 sm:p-4 border-2 border-[#FF4A22] rounded-none">
+                <p className="font-mono text-[9px] sm:text-[10px] font-black uppercase tracking-wider leading-snug">
+                  ИЗМЕРЕНИЕ: скоринг, DurationMs, ретраи → dataset.jsonl (AI Worker). Human Intervention Rate → Pilot, трекинг действий в веб-панели.
+                </p>
               </div>
             </div>
           </Slide>
