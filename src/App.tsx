@@ -382,8 +382,8 @@ export default function App() {
                       text: "Используем Few-Shot Prompting. В системном промпте зашиты 5 идеальных примеров (отравления, парадоксы) и жесткий формат возврата JSON.",
                     },
                     {
-                      title: "АГНОСТИЧНОСТЬ",
-                      text: "Воркер поддерживает локальные модели (Ollama/Qwen) для нулевой стоимости и внешние API (DeepSeek/GigaChat) для высокой скорости.",
+                      title: "DEEPSEEK API",
+                      text: "Основной провайдер LLM в пайплайне. DeepSeek API обеспечивает быструю генерацию и строгий JSON-контракт {open_part, hidden_part}.",
                     },
                   ].map((block) => (
                     <div key={block.title} className="border border-white/20 bg-black flex flex-col rounded-none flex-1">
@@ -510,7 +510,7 @@ export default function App() {
                   {[
                     {
                       title: "LLM TIMEOUT",
-                      text: "Нейросети нестабильны. Запрос к GigaChat/Ollama может отвалиться.",
+                      text: "Нейросети нестабильны. Запрос к DeepSeek API может отвалиться.",
                     },
                     {
                       title: "NO AUTO-COMMIT",
@@ -615,7 +615,7 @@ export default function App() {
                       ПРОДУКТ (WIN)
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">
-                      Модель подписки SaaS (от 5 000 ₽/мес). Нулевые затраты на генерацию благодаря использованию локальных LLM (Ollama/Qwen).
+                      Модель подписки SaaS (от 5 000 ₽/мес). Генерация через DeepSeek API — предсказуемые затраты при высокой марже SaaS.
                     </p>
                   </div>
                   <span className="font-mono text-[9px] text-zinc-400 uppercase font-black tracking-widest">
