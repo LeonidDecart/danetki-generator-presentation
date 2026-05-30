@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu, TrendingUp, Server, Wallet, Users, Code2 } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu, TrendingUp, Server, Wallet, Code2 } from "lucide-react";
 
 import Heading from "./components/Heading";
 import Text from "./components/Text";
