@@ -51,7 +51,7 @@ export default function Slide({
           initial="enter"
           animate="center"
           exit="exit"
-          className="w-full min-h-[65vh] flex flex-col justify-center relative z-10 rounded-none overflow-hidden"
+          className="w-full min-h-[65vh] flex flex-col justify-center relative z-10 rounded-none overflow-visible"
         >
           {children}
         </motion.div>

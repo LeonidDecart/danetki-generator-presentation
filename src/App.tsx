@@ -5,6 +5,7 @@ import Heading from "./components/Heading";
 import Text from "./components/Text";
 import Slide from "./components/Slide";
 import FlowArrow from "./components/FlowArrow";
+import GlossaryText from "./components/GlossaryText";
 import {
   SLIDE_COUNT,
   SLIDES_NAV,
@@ -90,7 +91,7 @@ export default function App() {
           <div className="flex items-center space-x-2">
             <div className="w-3 h-3 bg-[#FF4A22] rounded-none shrink-0" />
             <span className="font-mono text-xs font-black tracking-widest uppercase">
-              B2B PRESENTATION // АВТОМАТИЗАЦИЯ ДОХОДА
+              <GlossaryText text="B2B PRESENTATION // АВТОМАТИЗАЦИЯ ДОХОДА" />
             </span>
           </div>
 
@@ -107,7 +108,7 @@ export default function App() {
                     : "bg-transparent text-zinc-400 border-zinc-800 hover:text-white hover:border-white"}
                 `}
               >
-                {slide.num} {slide.name}
+                {slide.num} <GlossaryText text={slide.name} />
               </button>
             ))}
           </div>
@@ -122,7 +123,7 @@ export default function App() {
             <div id="slide-1-layout" className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
               <div className="lg:col-span-8 flex flex-col items-start text-left space-y-4 md:space-y-6">
                 <div className="bg-[#FF4A22] text-white font-mono px-3 py-0.5 text-xs font-black tracking-widest uppercase inline-block rounded-none">
-                  AI-КОНВЕЙЕР КОНТЕНТА
+                  <GlossaryText text="AI-КОНВЕЙЕР КОНТЕНТА" />
                 </div>
                 <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-none font-display">
                   ГЕНЕРАТОР <br />
@@ -141,9 +142,9 @@ export default function App() {
               <div className="lg:col-span-4 hidden lg:block relative h-[280px] w-full bg-[#161616] border-2 border-white flex items-center justify-center overflow-hidden rounded-none">
                 <div className="absolute top-0 right-0 left-0 bottom-0 bg-[#FF4A22] origin-bottom-left -rotate-12 translate-y-16 translate-x-12 opacity-95" />
                 <div className="absolute inset-6 flex flex-col justify-between z-10 select-none">
-                  <span className="font-mono text-[10px] font-black tracking-widest opacity-50 uppercase text-white">SYSTEM ACTIVE //</span>
-                  <span className="text-5xl font-mono font-black tracking-tighter leading-none text-white">REVENUE ENGINE</span>
-                  <span className="font-mono text-[10px] font-black tracking-wider text-right uppercase text-black">AUTOMATED WEB FLOW</span>
+                  <span className="font-mono text-[10px] font-black tracking-widest opacity-50 uppercase text-white"><GlossaryText text="SYSTEM ACTIVE //" /></span>
+                  <span className="text-5xl font-mono font-black tracking-tighter leading-none text-white"><GlossaryText text="REVENUE ENGINE" /></span>
+                  <span className="font-mono text-[10px] font-black tracking-wider text-right uppercase text-black"><GlossaryText text="AUTOMATED WEB FLOW" /></span>
                 </div>
               </div>
             </div>
@@ -212,7 +213,7 @@ export default function App() {
             <div id="slide-3-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <span className="font-mono text-[10px] font-black tracking-widest text-[#FF4A22] uppercase block mb-1">
-                  // COMPETITIVE EDGE
+                  <GlossaryText text="// COMPETITIVE EDGE" />
                 </span>
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
                   СКРЫТОЕ ПРЕИМУЩЕСТВО
@@ -224,7 +225,7 @@ export default function App() {
                     ОБЫЧНЫЙ ПОДХОД (ЧАТ-БОТЫ)
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-600 font-bold leading-relaxed">
-                    Ручной поиск статей. Копипаст в нейросеть. Ошибки контекста. Необходимость придумывать длинные промпты и вручную проверять факты.
+                    <GlossaryText text="Ручной поиск статей. Копипаст в нейросеть. Ошибки контекста. Необходимость придумывать длинные промпты и вручную проверять факты." />
                   </p>
                 </div>
                 <div className="border-2 border-[#FF4A22] bg-black p-5 sm:p-6 md:p-8 flex flex-col justify-center space-y-4 rounded-none min-h-[200px]">
@@ -232,7 +233,7 @@ export default function App() {
                     НАШ ОБЛАЧНЫЙ КОНВЕЙЕР
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">
-                    Zero-prompting. 1 клик в web-панели. Парсер, оркестрация и JSON-выдача на VPS. SaaS-подобная доставка: пользователь не ставит софт — только заходит на сайт.
+                    <GlossaryText text="Zero-prompting. 1 клик в web-панели. Парсер, оркестрация и JSON-выдача на VPS. SaaS-подобная доставка: пользователь не ставит софт — только заходит на сайт." />
                   </p>
                 </div>
               </div>
@@ -244,7 +245,7 @@ export default function App() {
             <div id="slide-4-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                  USER FLOW: ВХОД ➔ ДЕЙСТВИЕ ➔ РЕЗУЛЬТАТ
+                  <GlossaryText text="USER FLOW: ВХОД ➔ ДЕЙСТВИЕ ➔ РЕЗУЛЬТАТ" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-6 items-stretch">
@@ -259,7 +260,7 @@ export default function App() {
                         {item.step}
                       </span>
                       <p className="text-sm sm:text-base md:text-lg text-white font-black uppercase leading-snug tracking-tight">
-                        {item.text}
+                        <GlossaryText text={item.text} />
                       </p>
                     </div>
                   ))}
@@ -271,15 +272,15 @@ export default function App() {
                     </span>
                   </div>
                   <button className="w-full bg-[#FF4A22] text-white border-2 border-[#FF4A22] py-4 sm:py-5 font-mono text-sm sm:text-base font-black uppercase tracking-wider rounded-none hover:bg-black hover:text-[#FF4A22] transition-colors">
-                    START GENERATION
+                    <GlossaryText text="START GENERATION" />
                   </button>
                   <div className="flex-grow flex flex-col justify-end space-y-3 pt-2">
                     <div className="border border-white/20 bg-black p-4 rounded-none">
-                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest block mb-2">OPEN_PART</span>
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest block mb-2"><GlossaryText text="OPEN_PART" /></span>
                       <p className="text-xs sm:text-sm text-white font-bold leading-relaxed">{FLOW_OPEN_PART}</p>
                     </div>
                     <div className="border-2 border-[#FF4A22] bg-[#111111] p-4 rounded-none">
-                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-2">HIDDEN_PART</span>
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-2"><GlossaryText text="HIDDEN_PART" /></span>
                       <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">{FLOW_HIDDEN_PART}</p>
                     </div>
                   </div>
@@ -293,12 +294,12 @@ export default function App() {
             <div id="slide-5-layout" className="w-full flex flex-col items-center space-y-6 sm:space-y-8">
               <div className="w-full border-b border-white/20 pb-2 text-center">
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  РОЛЬ AI: НЕ ДЛЯ КРАСОТЫ
+                  <GlossaryText text="РОЛЬ AI: НЕ ДЛЯ КРАСОТЫ" />
                 </Heading>
               </div>
               <div className="w-full max-w-5xl border-4 border-[#FF4A22] bg-black p-8 sm:p-10 md:p-12 rounded-none text-center">
                 <h3 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white tracking-tighter leading-[0.95] font-display">
-                  LLM ВЫПОЛНЯЕТ<br />СЛОЖНУЮ СЕМАНТИЧЕСКУЮ ЗАДАЧУ
+                  <GlossaryText text="LLM ВЫПОЛНЯЕТ" /><br /><GlossaryText text="СЛОЖНУЮ СЕМАНТИЧЕСКУЮ ЗАДАЧУ" />
                 </h3>
               </div>
               <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
@@ -311,7 +312,7 @@ export default function App() {
                     <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
                       // 0{idx + 1}
                     </span>
-                    <p className="text-xs sm:text-sm text-white font-black uppercase leading-relaxed tracking-tight">{text}</p>
+                    <p className="text-xs sm:text-sm text-white font-black uppercase leading-relaxed tracking-tight"><GlossaryText text={text} /></p>
                   </div>
                 ))}
               </div>
@@ -323,7 +324,7 @@ export default function App() {
             <div id="slide-6-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  ДАННЫЕ: ТОПЛИВО ДЛЯ ML
+                  <GlossaryText text="ДАННЫЕ: ТОПЛИВО ДЛЯ ML" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
@@ -349,8 +350,8 @@ export default function App() {
                       {col.title}
                     </div>
                     <div className="p-5 sm:p-6 flex-grow flex flex-col justify-between space-y-6 min-h-[180px]">
-                      <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">{col.text}</p>
-                      <span className="font-mono text-[9px] text-zinc-500 uppercase tracking-widest font-black">{col.footer}</span>
+                      <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed"><GlossaryText text={col.text} /></p>
+                      <span className="font-mono text-[9px] text-zinc-500 uppercase tracking-widest font-black"><GlossaryText text={col.footer} /></span>
                     </div>
                   </div>
                 ))}
@@ -363,7 +364,7 @@ export default function App() {
             <div id="slide-7-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  МОДЕЛЬ: NLP & СЕМАНТИКА
+                  <GlossaryText text="МОДЕЛЬ: NLP & СЕМАНТИКА" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
@@ -372,7 +373,7 @@ export default function App() {
                     НЕ КЛАССИЧЕСКИЙ ML.
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed">
-                    Задача требует понимания контекста, логики повествования и дедукции. Классические алгоритмы (TF-IDF, Word2Vec) не справятся с отделением сюжетной развязки от завязки. Нужна LLM.
+                    <GlossaryText text="Задача требует понимания контекста, логики повествования и дедукции. Классические алгоритмы (TF-IDF, Word2Vec) не справятся с отделением сюжетной развязки от завязки. Нужна LLM." />
                   </p>
                 </div>
                 <div className="flex flex-col gap-4">
@@ -388,10 +389,10 @@ export default function App() {
                   ].map((block) => (
                     <div key={block.title} className="border border-white/20 bg-black flex flex-col rounded-none flex-1">
                       <div className="bg-[#FF4A22] text-white px-4 py-2 font-mono text-[10px] sm:text-[11px] font-black uppercase tracking-wider rounded-none">
-                        {block.title}
+                        <GlossaryText text={block.title} />
                       </div>
                       <div className="p-4 sm:p-5">
-                        <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">{block.text}</p>
+                        <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed"><GlossaryText text={block.text} /></p>
                       </div>
                     </div>
                   ))}
@@ -405,7 +406,7 @@ export default function App() {
             <div id="slide-8-layout" className="w-full flex flex-col space-y-3 sm:space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                  MVP-ПАЙПЛАЙН: 5 МИКРОСЕРВИСОВ
+                  <GlossaryText text="MVP-ПАЙПЛАЙН: 5 МИКРОСЕРВИСОВ" />
                 </Heading>
               </div>
               <div className="flex flex-col lg:flex-row items-stretch lg:items-center gap-2 lg:gap-0">
@@ -438,11 +439,11 @@ export default function App() {
                       }`}
                     >
                       <div className="bg-[#FF4A22] text-white px-2 py-1.5 font-mono text-[8px] sm:text-[9px] font-black uppercase tracking-wider rounded-none leading-tight">
-                        {block.title}
+                        <GlossaryText text={block.title} />
                       </div>
                       <div className="p-3 sm:p-4 flex-grow">
                         <p className={`text-[10px] sm:text-xs font-bold leading-snug ${block.highlight ? "text-white" : "text-zinc-200"}`}>
-                          {block.text}
+                          <GlossaryText text={block.text} />
                         </p>
                       </div>
                     </div>
@@ -456,7 +457,7 @@ export default function App() {
                 ))}
               </div>
               <div className="font-mono text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest font-black">
-                // FLOW: GATEWAY → PARSER → KAFKA → AI WORKER → POSTGRESQL
+                <GlossaryText text="// FLOW: GATEWAY → PARSER → KAFKA → AI WORKER → POSTGRESQL" />
               </div>
             </div>
           </Slide>
@@ -466,7 +467,7 @@ export default function App() {
             <div id="slide-9-layout" className="w-full flex flex-col space-y-3 sm:space-y-4">
               <div className="border-b border-[#FF4A22] pb-2">
                 <Heading level={2} className="text-[#FF4A22] font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                  ПОЧЕМУ KAFKA, А НЕ RABBITMQ?
+                  <GlossaryText text="ПОЧЕМУ KAFKA, А НЕ RABBITMQ?" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
@@ -475,18 +476,18 @@ export default function App() {
                     <div className="w-full h-px bg-zinc-700 rotate-[-8deg] scale-110" />
                   </div>
                   <h3 className="text-lg sm:text-xl font-black uppercase text-zinc-500 tracking-tight line-through decoration-zinc-600 relative z-10">
-                    RABBITMQ (ОЧЕРЕДЬ ЗАДАЧ)
+                    <GlossaryText text="RABBITMQ (ОЧЕРЕДЬ ЗАДАЧ)" />
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-600 font-bold leading-relaxed relative z-10">
-                    Удаляет сообщение после прочтения. Если LLM упала по таймауту — история навсегда потеряна. Нет встроенной персистентности.
+                    <GlossaryText text="Удаляет сообщение после прочтения. Если LLM упала по таймауту — история навсегда потеряна. Нет встроенной персистентности." />
                   </p>
                 </div>
                 <div className="border-2 border-[#FF4A22] bg-black p-5 sm:p-6 flex flex-col space-y-4 rounded-none min-h-[200px]">
                   <h3 className="text-lg sm:text-xl md:text-2xl font-black uppercase text-white tracking-tight">
-                    KAFKA <span className="text-[#FF4A22]">(ЖУРНАЛ СОБЫТИЙ)</span>
+                    <GlossaryText text="KAFKA" /> <span className="text-[#FF4A22]">(ЖУРНАЛ СОБЫТИЙ)</span>
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">
-                    Сообщения хранятся независимо от обработки. Реализован паттерн SAGA и ручной коммит оффсетов. Ни одного потерянного байта.
+                    <GlossaryText text="Сообщения хранятся независимо от обработки. Реализован паттерн SAGA и ручной коммит оффсетов. Ни одного потерянного байта." />
                   </p>
                 </div>
               </div>
@@ -498,10 +499,10 @@ export default function App() {
             <div id="slide-10-layout" className="w-full flex flex-col space-y-4 relative">
               <div className="border-b border-white/20 pb-2">
                 <span className="font-mono text-[10px] font-black tracking-widest text-[#FF4A22] uppercase block mb-1">
-                  // AI WORKER
+                  <GlossaryText text="// AI WORKER" />
                 </span>
                 <Heading level={2} className="text-white font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
-                  ML-ИНФЕРЕНС И ОТКАЗОУСТОЙЧИВОСТЬ
+                  <GlossaryText text="ML-ИНФЕРЕНС И ОТКАЗОУСТОЙЧИВОСТЬ" />
                 </Heading>
               </div>
               <div className="border-4 border-[#FF4A22] bg-black p-4 sm:p-6 rounded-none relative">
@@ -523,10 +524,10 @@ export default function App() {
                   ].map((step, idx) => (
                     <div key={step.title} className="border border-white/20 bg-[#111111] p-4 sm:p-5 flex flex-col space-y-2 rounded-none">
                       <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
-                        // STEP 0{idx + 1}
+                        <GlossaryText text={`// STEP 0${idx + 1}`} />
                       </span>
-                      <h3 className="text-sm sm:text-base font-black uppercase text-white tracking-tight">{step.title}</h3>
-                      <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed">{step.text}</p>
+                      <h3 className="text-sm sm:text-base font-black uppercase text-white tracking-tight"><GlossaryText text={step.title} /></h3>
+                      <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed"><GlossaryText text={step.text} /></p>
                     </div>
                   ))}
                 </div>
@@ -539,7 +540,7 @@ export default function App() {
             <div id="slide-11-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  МЕТРИКИ: МОДЕЛЬ ➔ ИНФРА ➔ ПОЛЬЗА
+                  <GlossaryText text="МЕТРИКИ: МОДЕЛЬ ➔ ИНФРА ➔ ПОЛЬЗА" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/20 rounded-none">
@@ -592,14 +593,14 @@ export default function App() {
                 ].map((col) => (
                   <div key={col.tag} className={`p-4 sm:p-5 md:p-6 flex flex-col space-y-4 ${col.bg} ${col.border} rounded-none`}>
                     <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
-                      {col.tag}
+                      <GlossaryText text={col.tag} />
                     </span>
                     {col.items.map((item) => (
                       <div key={item.title} className="border-l-4 border-[#FF4A22] pl-3 space-y-1">
                         <h3 className="text-xs sm:text-sm font-black uppercase text-white tracking-tight leading-snug">
-                          {item.title}
+                          <GlossaryText text={item.title} />
                         </h3>
-                        <p className="text-[11px] sm:text-xs text-zinc-300 font-bold leading-relaxed">{item.text}</p>
+                        <p className="text-[11px] sm:text-xs text-zinc-300 font-bold leading-relaxed"><GlossaryText text={item.text} /></p>
                       </div>
                     ))}
                   </div>
@@ -607,7 +608,7 @@ export default function App() {
               </div>
               <div className="bg-[#FF4A22] text-white p-3 sm:p-4 border-2 border-[#FF4A22] rounded-none">
                 <p className="font-mono text-[9px] sm:text-[10px] font-black uppercase tracking-wider leading-snug">
-                  ИЗМЕРЕНИЕ: скоринг, DurationMs, ретраи → dataset.jsonl (AI Worker). Human Intervention Rate → Pilot, трекинг действий в веб-панели.
+                  <GlossaryText text="ИЗМЕРЕНИЕ: скоринг, DurationMs, ретраи → dataset.jsonl (AI Worker). Human Intervention Rate → Pilot, трекинг действий в веб-панели." />
                 </p>
               </div>
             </div>
@@ -618,40 +619,45 @@ export default function App() {
             <div id="slide-12-layout" className="w-full flex flex-col space-y-4">
               <div className="border-b border-white/20 pb-2">
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  БАЗОВАЯ ЭКОНОМИКА: WIN-WIN
+                  <GlossaryText text="БАЗОВАЯ ЭКОНОМИКА: WIN-WIN" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
                 <div className="border border-white/20 bg-[#141414] p-5 sm:p-6 flex flex-col justify-between space-y-4 rounded-none min-h-[160px]">
                   <div>
                     <h3 className="text-lg sm:text-xl font-black uppercase text-white font-display border-b border-white/10 pb-2 mb-3">
-                      КЛИЕНТ (WIN)
+                      <GlossaryText text="КЛИЕНТ (WIN)" />
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">
                       Отказ от копирайтера (экономия ~50 000 ₽/мес). Увеличение объема контента в 3 раза = прямое увеличение доходов с рекламы.
                     </p>
                   </div>
                   <span className="font-mono text-[9px] text-[#FF4A22] uppercase font-black tracking-widest">
-                    ROAS // РОСТ ДОХОДОВ
+                    <GlossaryText text="ROAS // РОСТ ДОХОДОВ" />
                   </span>
                 </div>
                 <div className="border border-white/20 bg-black p-5 sm:p-6 flex flex-col justify-between space-y-4 rounded-none min-h-[160px]">
                   <div>
                     <h3 className="text-lg sm:text-xl font-black uppercase text-white font-display border-b border-white/10 pb-2 mb-3">
-                      ПРОДУКТ (WIN)
+                      <GlossaryText text="ПРОДУКТ (WIN)" />
                     </h3>
                     <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">
-                      Учебный MVP: cloud-hosted web app (VPS, Docker). Подписки и мультитенантности нет — это этап коммерческого SaaS. Затраты на DeepSeek API предсказуемы.
+                      <GlossaryText text="Учебный MVP: cloud-hosted web app (VPS, Docker). Подписки и мультитенантности нет — это этап коммерческого SaaS. Затраты на DeepSeek API предсказуемы." />
                     </p>
                   </div>
                   <span className="font-mono text-[9px] text-zinc-400 uppercase font-black tracking-widest">
-                    CLOUD HOSTED // MVP SCOPE
+                    <GlossaryText text="CLOUD HOSTED // MVP SCOPE" />
                   </span>
                 </div>
               </div>
               <div className="bg-[#FF4A22] text-white p-3 sm:p-4 border-2 border-[#FF4A22] rounded-none">
                 <p className="font-mono text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider leading-snug">
-                  ROADMAP: MVP (Сбор + Генерация) ➔ PILOT (Автопостинг готовых загадок напрямую в Telegram/ВК)
+                  <GlossaryText text="ROADMAP: MVP (Сбор + Генерация) ➔ PILOT (Автопостинг готовых загадок напрямую в Telegram/ВК)" />
+                </p>
+              </div>
+              <div className="border-2 border-white bg-black text-white p-3 sm:p-4 rounded-none">
+                <p className="font-mono text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider leading-snug">
+                  <GlossaryText text="ROADMAP+: Умный отбор историй. Качество данетки зависит от сырья — мало историй подходят под формат. План: фильтрация на уровне парсера или AI-модуля → до пользователя только лучшие истории и данетки." />
                 </p>
               </div>
             </div>
@@ -687,12 +693,12 @@ export default function App() {
                     }`}
                   >
                     <span className="font-mono text-[10px] font-black text-[#FF4A22] uppercase tracking-widest block mb-2">
-                      // RISK 0{idx + 1}
+                      <GlossaryText text={`// RISK 0${idx + 1}`} />
                     </span>
                     <h3 className="text-base sm:text-lg md:text-xl font-black uppercase text-white tracking-tight mb-2">
-                      {block.title}
+                      <GlossaryText text={block.title} />
                     </h3>
-                    <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed">{block.text}</p>
+                    <p className="text-xs sm:text-sm text-zinc-300 font-bold leading-relaxed"><GlossaryText text={block.text} /></p>
                   </div>
                 ))}
               </div>
@@ -706,8 +712,8 @@ export default function App() {
                 // ГЛАВНЫЙ ВЫВОД
               </span>
               <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black uppercase tracking-tighter leading-[0.95] max-w-5xl font-display px-2">
-                ХОРОШИЙ AI-ПРОЕКТ НАЧИНАЕТСЯ{" "}
-                <span className="text-[#FF4A22]">НЕ С МОДЕЛИ.</span>
+                <GlossaryText text="ХОРОШИЙ AI-ПРОЕКТ НАЧИНАЕТСЯ" />{" "}
+                <span className="text-[#FF4A22]"><GlossaryText text="НЕ С МОДЕЛИ." /></span>
               </h2>
               <p className="text-base sm:text-lg md:text-2xl text-white font-bold max-w-3xl leading-relaxed px-4">
                 А с ясной связи между болью пользователя, чистыми данными и измеримой бизнес-ценностью.
@@ -722,7 +728,7 @@ export default function App() {
                   rel="noopener noreferrer"
                   className="border-2 border-[#FF4A22] bg-[#FF4A22] text-white py-3 px-6 font-mono text-[10px] sm:text-xs font-black uppercase tracking-wider rounded-none hover:bg-black hover:text-[#FF4A22] transition-colors no-underline"
                 >
-                  [ GITHUB REPOSITORY ]
+                  [ <GlossaryText text="GITHUB REPOSITORY" /> ]
                 </a>
               </div>
             </div>
@@ -752,7 +758,7 @@ export default function App() {
               ) : (
                 <Maximize className="w-3.5 h-3.5 stroke-[3px]" />
               )}
-              <span className="hidden sm:inline">{isFullscreen ? "EXIT" : "FULL"}</span>
+              <span className="hidden sm:inline"><GlossaryText text={isFullscreen ? "EXIT" : "FULL"} /></span>
             </button>
             <div className="flex items-stretch border border-white h-10 bg-black min-w-[260px]">
             <button
