@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu } from "lucide-react";
 
 import Heading from "./components/Heading";
 import Text from "./components/Text";
@@ -319,42 +319,134 @@ export default function App() {
             </div>
           </Slide>
 
-          {/* SLIDE 6: ML Data */}
+          {/* SLIDE 6: ML Data Dashboard */}
           <Slide isActive={currentSlide === 5} slideIndex={5} direction={direction}>
-            <div id="slide-6-layout" className="w-full flex flex-col space-y-4">
-              <div className="border-b border-white/20 pb-2">
-                <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
+            <div id="slide-6-layout" className="w-full flex flex-col space-y-3">
+              <div className="border-b border-white/20 pb-2 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+                <Heading level={2} className="text-white font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
                   <GlossaryText text="ДАННЫЕ: ТОПЛИВО ДЛЯ ML" />
                 </Heading>
+                <div className="flex flex-wrap gap-1.5">
+                  {["ACTIVE", "FILTER ON", "DATASET READY", "PIPELINE HEALTHY"].map((badge) => (
+                    <span
+                      key={badge}
+                      className="font-mono text-[7px] sm:text-[8px] font-black uppercase tracking-widest px-2 py-0.5 border border-[#FF4A22]/40 text-[#FF4A22] bg-[#FF4A22]/10"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
-                {[
-                  {
-                    title: "ИСТОЧНИКИ",
-                    text: "Парсинг UGC-площадок (Factroom и аналогичные базы криминальных историй/загадок). Настроен автоматический ScraperRegistry.",
-                    footer: "SCRAPER REGISTRY // ACTIVE",
-                  },
-                  {
-                    title: "ФИЛЬТР ОБЪЕМА",
-                    text: "Строгий лимит: от 100 до 4000 символов. Слишком короткие не имеют сюжета, слишком длинные ломают контекст модели.",
-                    footer: "100 – 4000 CHARS // HARD LIMIT",
-                  },
-                  {
-                    title: "STOP-WORDS",
-                    text: "Блэклист на этапе парсинга. Отсекаем всё, что содержит слова: призрак, НЛО, мистика, проклятие. В базу попадают только реальные истории.",
-                    footer: "BLACKLIST FILTER // ON",
-                  },
-                ].map((col) => (
-                  <div key={col.title} className="border border-white/20 bg-black flex flex-col rounded-none">
-                    <div className="bg-[#FF4A22] text-white px-4 py-2 font-mono text-[11px] font-black uppercase tracking-wider rounded-none">
-                      {col.title}
+
+              <div className="relative border border-white/20 bg-[#0a0a0a] rounded-none overflow-visible">
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(255,74,34,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,74,34,0.04)_1px,transparent_1px)] [background-size:20px_20px] pointer-events-none" />
+
+                <div className="relative p-3 sm:p-4 md:p-5 space-y-3 sm:space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    {[
+                      {
+                        icon: Globe,
+                        label: "ИСТОЧНИКИ",
+                        value: "UGC",
+                        sub: "Factroom + аналоги",
+                        status: "SCRAPER REGISTRY // ACTIVE",
+                      },
+                      {
+                        icon: Gauge,
+                        label: "ОБЪЁМ",
+                        value: "100–4000",
+                        sub: "символов / история",
+                        status: "HARD LIMIT // ON",
+                      },
+                      {
+                        icon: ShieldBan,
+                        label: "ФИЛЬТРАЦИЯ",
+                        value: "BLACKLIST",
+                        sub: "стоп-слова включены",
+                        status: "FILTER // ON",
+                      },
+                    ].map((kpi) => (
+                      <div
+                        key={kpi.label}
+                        className="relative border border-white/15 bg-black p-4 flex flex-col justify-between min-h-[110px] rounded-none group hover:border-[#FF4A22]/50 transition-colors"
+                      >
+                        <div className="absolute top-0 left-0 w-full h-0.5 bg-[#FF4A22]" />
+                        <div className="flex items-start justify-between gap-2">
+                          <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest">
+                            {kpi.label}
+                          </span>
+                          <kpi.icon className="w-4 h-4 text-[#FF4A22] shrink-0 opacity-80" strokeWidth={2.5} />
+                        </div>
+                        <div className="pt-2">
+                          <div className="text-2xl sm:text-3xl font-mono font-black text-white tracking-tighter leading-none">
+                            <GlossaryText text={kpi.value} />
+                          </div>
+                          <p className="text-[10px] sm:text-xs text-zinc-400 font-bold mt-1 uppercase tracking-wide">
+                            <GlossaryText text={kpi.sub} />
+                          </p>
+                        </div>
+                        <span className="font-mono text-[7px] sm:text-[8px] text-[#FF4A22]/80 uppercase tracking-widest font-black mt-3">
+                          <GlossaryText text={kpi.status} />
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <div className="border border-white/15 bg-black p-4 rounded-none">
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
+                        // DATA PIPELINE FLOW
+                      </span>
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        {[
+                          { step: "UGC", icon: Globe },
+                          { step: "ПАРСЕР", icon: Database },
+                          { step: "ФИЛЬТР", icon: ShieldBan },
+                          { step: "DATASET", icon: Database },
+                          { step: "ML", icon: Cpu },
+                        ].map((node, idx, arr) => (
+                          <div key={node.step} className="flex items-center gap-1.5 sm:gap-2">
+                            <div className="flex items-center gap-1.5 border border-white/20 bg-[#111111] px-2.5 py-2 rounded-none min-w-[72px] sm:min-w-[80px]">
+                              <node.icon className="w-3 h-3 text-[#FF4A22] shrink-0" strokeWidth={2.5} />
+                              <span className="font-mono text-[9px] sm:text-[10px] font-black text-white uppercase tracking-wide">
+                                <GlossaryText text={node.step} />
+                              </span>
+                            </div>
+                            {idx < arr.length - 1 && (
+                              <ChevronRight className="w-3.5 h-3.5 text-[#FF4A22] shrink-0 hidden sm:block" strokeWidth={3} />
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                      <p className="font-mono text-[7px] sm:text-[8px] text-zinc-600 uppercase tracking-widest mt-3">
+                        INGEST → CLEAN → VALIDATE → STORE → INFER
+                      </p>
                     </div>
-                    <div className="p-5 sm:p-6 flex-grow flex flex-col justify-between space-y-6 min-h-[180px]">
-                      <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed"><GlossaryText text={col.text} /></p>
-                      <span className="font-mono text-[9px] text-zinc-500 uppercase tracking-widest font-black"><GlossaryText text={col.footer} /></span>
+
+                    <div className="border border-[#FF4A22]/30 bg-[#111111] p-4 rounded-none">
+                      <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
+                        // КОНТРОЛЬ КАЧЕСТВА
+                      </span>
+                      <ul className="space-y-2">
+                        {[
+                          "Длина 100–4000 символов",
+                          "Только реальные истории",
+                          "Автоматический ScraperRegistry",
+                          "Исключение мистики и фантастики",
+                        ].map((item) => (
+                          <li key={item} className="flex items-start gap-2">
+                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center border border-[#FF4A22] bg-[#FF4A22]/10">
+                              <Check className="w-2.5 h-2.5 text-[#FF4A22]" strokeWidth={3} />
+                            </span>
+                            <span className="text-[10px] sm:text-xs text-zinc-200 font-bold leading-snug">
+                              <GlossaryText text={item} />
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </Slide>

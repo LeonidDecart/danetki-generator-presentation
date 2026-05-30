@@ -17,7 +17,7 @@
 | 03 | EDGE | Скрытое преимущество (облачный конвейер vs чат-боты) |
 | 04 | FLOW | User Flow и UI-мокап |
 | 05 | AI | Роль LLM |
-| 06 | DATA | Данные для ML |
+| 06 | DATA | Data pipeline dashboard (источники, фильтры, KPI) |
 | 07 | MODEL | Выбор модели (NLP & семантика) |
 | 08 | PIPE | MVP-пайплайн (микросервисы) |
 | 09 | KAFKA | Kafka vs RabbitMQ |
