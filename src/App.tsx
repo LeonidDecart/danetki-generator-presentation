@@ -823,15 +823,18 @@ export default function App() {
                     </>
                   ) : (
                     <>
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                         {[
-                          { icon: Server, label: "СЕРВЕР И API", value: "~2 000 ₽", sub: "расходы в месяц", note: "хостинг + нейросеть" },
-                          { icon: Wallet, label: "ДОХОД С КЛИЕНТА", value: "990 ₽", sub: "подписка / месяц", note: "наш тариф" },
-                          { icon: Users, label: "КОМАНДА", value: "~97 000 ₽", sub: "разработка + зарплаты", note: "амортизация + ФОТ" },
+                          { icon: Server, label: "СЕРВЕР", value: "~2 000 ₽", sub: "в месяц", note: "хостинг + API", accent: false },
+                          { icon: Code2, label: "РАЗРАБОТКА", value: "~400 000 ₽", sub: "единоразово", note: "создание MVP", accent: true },
+                          { icon: Users, label: "ЗАРПЛАТЫ", value: "~80 000 ₽", sub: "в месяц", note: "5 разработчиков", accent: false },
+                          { icon: Wallet, label: "ДОХОД", value: "990 ₽", sub: "с клиента", note: "подписка / мес", accent: false },
                         ].map((kpi) => (
                           <div
                             key={kpi.label}
-                            className="relative border border-white/15 bg-black p-4 flex flex-col justify-between min-h-[110px] rounded-none"
+                            className={`relative border p-4 flex flex-col justify-between min-h-[110px] rounded-none ${
+                              kpi.accent ? "border-2 border-[#FF4A22] bg-[#111111]" : "border-white/15 bg-black"
+                            }`}
                           >
                             <div className="absolute top-0 left-0 w-full h-0.5 bg-[#FF4A22]" />
                             <div className="flex items-start justify-between gap-2">
@@ -841,7 +844,7 @@ export default function App() {
                               <kpi.icon className="w-4 h-4 text-[#FF4A22] shrink-0 opacity-80" strokeWidth={2.5} />
                             </div>
                             <div className="pt-2">
-                              <div className="text-2xl sm:text-3xl font-mono font-black text-white tracking-tighter leading-none">
+                              <div className={`text-xl sm:text-2xl font-mono font-black tracking-tighter leading-none ${kpi.accent ? "text-[#FF4A22]" : "text-white"}`}>
                                 {kpi.value}
                               </div>
                               <p className="text-[10px] sm:text-xs text-zinc-400 font-bold mt-1">{kpi.sub}</p>
@@ -851,6 +854,38 @@ export default function App() {
                             </span>
                           </div>
                         ))}
+                      </div>
+
+                      <div className="border-2 border-[#FF4A22] bg-[#111111] p-4 rounded-none">
+                        <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
+                          // ЗАТРАТЫ КОМПАНИИ НА РАЗРАБОТКУ
+                        </span>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
+                          {[
+                            { val: "~160 000 ₽", label: "BACKEND", note: "Go, C#, Kafka, PostgreSQL" },
+                            { val: "~100 000 ₽", label: "FRONTEND", note: "веб-панель, UX" },
+                            { val: "~80 000 ₽", label: "ML / AI", note: "промпты, воркер, DeepSeek" },
+                            { val: "~60 000 ₽", label: "DEVOPS", note: "Docker, VPS, деплой" },
+                          ].map((row) => (
+                            <div key={row.label} className="border border-white/15 bg-black p-3 rounded-none">
+                              <span className="font-mono text-[8px] font-black text-zinc-500 uppercase tracking-widest block">
+                                {row.label}
+                              </span>
+                              <span className="font-mono text-lg sm:text-xl font-black text-white tracking-tighter block mt-1">
+                                {row.val}
+                              </span>
+                              <span className="font-mono text-[7px] text-zinc-600 uppercase tracking-wide">{row.note}</span>
+                            </div>
+                          ))}
+                        </div>
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-t border-white/10 pt-3">
+                          <span className="font-mono text-[9px] sm:text-[10px] text-zinc-400 font-bold uppercase">
+                            Итого на MVP: ~400 000 ₽ · амортизация ~17 000 ₽/мес (24 мес)
+                          </span>
+                          <span className="font-mono text-sm sm:text-base font-black text-[#FF4A22] tracking-tighter">
+                            5 DEV × ~2 МЕС
+                          </span>
+                        </div>
                       </div>
 
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
@@ -881,19 +916,18 @@ export default function App() {
                           </div>
                         </div>
 
-                        <div className="border border-[#FF4A22]/30 bg-[#111111] p-4 rounded-none">
+                        <div className="border border-white/15 bg-black p-4 rounded-none">
                           <div className="flex items-center justify-between mb-3">
                             <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest">
-                              // РАЗРАБОТКА И ЗАРПЛАТЫ
+                              // ЗАРПЛАТЫ КОМАНДЫ
                             </span>
-                            <Code2 className="w-3.5 h-3.5 text-[#FF4A22]" strokeWidth={2.5} />
+                            <Users className="w-3.5 h-3.5 text-[#FF4A22]" strokeWidth={2.5} />
                           </div>
                           <div className="space-y-2">
                             {[
-                              { val: "~400 000 ₽", label: "СОЗДАНИЕ MVP", note: "единоразово, команда 5 чел." },
-                              { val: "~17 000 ₽", label: "В МЕСЯЦ (АМОРТ.)", note: "400 000 ÷ 24 месяца" },
-                              { val: "~80 000 ₽", label: "ЗАРПЛАТЫ КОМАНДЫ", note: "5 человек, part-time" },
-                              { val: "~97 000 ₽", label: "ИТОГО В МЕСЯЦ", note: "амортизация + зарплаты", accent: true },
+                              { val: "~16 000 ₽", label: "НА 1 РАЗРАБОТЧИКА", note: "part-time / месяц" },
+                              { val: "~80 000 ₽", label: "КОМАНДА (5 ЧЕЛ.)", note: "ежемесячный ФОТ" },
+                              { val: "~97 000 ₽", label: "ВСЕГО В МЕСЯЦ", note: "зарплаты + аморт. MVP", accent: true },
                             ].map((row) => (
                               <div key={row.label} className="flex items-start justify-between gap-2 border-b border-white/10 pb-2 last:border-0 last:pb-0">
                                 <div>
@@ -937,7 +971,7 @@ export default function App() {
                           ))}
                         </div>
                         <p className="font-mono text-[8px] sm:text-[9px] text-zinc-500 uppercase tracking-widest mt-3">
-                          10 клиентов × 990 ₽ = 9 900 ₽ выручки − 2 000 ₽ сервер ≈ 80% маржа
+                          Полные затраты компании: ~99 000 ₽/мес (сервер 2k + команда 97k) + 400k на MVP
                         </p>
                       </div>
                     </>
