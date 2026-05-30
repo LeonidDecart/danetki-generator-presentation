@@ -616,39 +616,66 @@ export default function App() {
 
           {/* SLIDE 12: Economics WIN-WIN */}
           <Slide isActive={currentSlide === 11} slideIndex={11} direction={direction}>
-            <div id="slide-12-layout" className="w-full flex flex-col space-y-4">
+            <div id="slide-12-layout" className="w-full flex flex-col space-y-3 sm:space-y-4">
               <div className="border-b border-white/20 pb-2">
-                <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  <GlossaryText text="БАЗОВАЯ ЭКОНОМИКА: WIN-WIN" />
+                <Heading level={2} className="text-white font-black tracking-tighter text-xl sm:text-2xl md:text-3xl lg:text-4xl">
+                  <GlossaryText text="ЭКОНОМИКА: ДОХОДЫ vs ЗАТРАТЫ" />
                 </Heading>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
-                <div className="border border-white/20 bg-[#141414] p-5 sm:p-6 flex flex-col justify-between space-y-4 rounded-none min-h-[160px]">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase text-white font-display border-b border-white/10 pb-2 mb-3">
-                      <GlossaryText text="КЛИЕНТ (WIN)" />
-                    </h3>
-                    <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">
-                      Отказ от копирайтера (экономия ~50 000 ₽/мес). Увеличение объема контента в 3 раза = прямое увеличение доходов с рекламы.
-                    </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-0 border border-white/20 rounded-none">
+                {[
+                  {
+                    tag: "// КЛИЕНТ (WIN)",
+                    bg: "bg-[#141414]",
+                    border: "md:border-r border-b md:border-b-0 border-white/20",
+                    rows: [
+                      { val: "−50 000 ₽", label: "ЭКОНОМИЯ / КОПИРАЙТЕР", desc: "Отказ от фрилансера или штатного редактора контента." },
+                      { val: "+25 000 ₽", label: "РОСТ РЕКЛАМЫ", desc: "×3 публикаций в неделю → больше показов и CPM в Telegram/ВК." },
+                      { val: "+75 000 ₽", label: "ИТОГО / МЕС", desc: "Чистый эффект для контент-мейкера: экономия + новый доход." },
+                    ],
+                    footer: "ROAS // CLIENT VALUE",
+                  },
+                  {
+                    tag: "// НАШИ ЗАТРАТЫ (COGS)",
+                    bg: "bg-black",
+                    border: "md:border-r border-b md:border-b-0 border-white/20",
+                    rows: [
+                      { val: "~1 200 ₽", label: "VPS + DOCKER", desc: "Облачный сервер: Gateway, Parser, Worker, Kafka, Redis, PostgreSQL." },
+                      { val: "~800 ₽", label: "DEEPSEEK API", desc: "~500 генераций/мес × ~1,5 ₽ (генерация + LLM-as-a-Judge + Retry)." },
+                      { val: "~2 000 ₽", label: "ИТОГО / МЕС", desc: "Полная стоимость инфраструктуры одного MVP-инстанса." },
+                    ],
+                    footer: "COGS // PREDICTABLE",
+                  },
+                  {
+                    tag: "// ПРОДУКТ (UNIT ECON)",
+                    bg: "bg-[#111111]",
+                    border: "",
+                    rows: [
+                      { val: "~1,5 ₽", label: "COST / ДАНЕТКА", desc: "Средняя себестоимость одной готовой публикации с учётом ретраев." },
+                      { val: "5 000 ₽", label: "ПОДПИСКА / КЛИЕНТ", desc: "Целевая цена SaaS на этапе Pilot (учебный MVP — бесплатно)." },
+                      { val: "~96%", label: "МАРЖА / 10 КЛ.", desc: "50 000 ₽ выручки − 2 000 ₽ COGS. Окупаемость: 1 клиент." },
+                    ],
+                    footer: "MARGIN // SAAS POTENTIAL",
+                  },
+                ].map((col) => (
+                  <div key={col.tag} className={`p-4 sm:p-5 flex flex-col space-y-3 ${col.bg} ${col.border} rounded-none`}>
+                    <span className="font-mono text-[9px] sm:text-[10px] font-black text-[#FF4A22] uppercase tracking-widest">
+                      <GlossaryText text={col.tag} />
+                    </span>
+                    {col.rows.map((row) => (
+                      <div key={row.label} className="border-l-4 border-[#FF4A22] pl-3 space-y-0.5">
+                        <div className="text-xl sm:text-2xl font-mono font-black text-white tracking-tighter leading-none">{row.val}</div>
+                        <div className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-400 uppercase tracking-widest">{row.label}</div>
+                        <p className="text-[10px] sm:text-[11px] text-zinc-300 font-bold leading-snug pt-0.5">
+                          <GlossaryText text={row.desc} />
+                        </p>
+                      </div>
+                    ))}
+                    <span className="font-mono text-[8px] text-zinc-500 uppercase font-black tracking-widest mt-auto pt-1">
+                      <GlossaryText text={col.footer} />
+                    </span>
                   </div>
-                  <span className="font-mono text-[9px] text-[#FF4A22] uppercase font-black tracking-widest">
-                    <GlossaryText text="ROAS // РОСТ ДОХОДОВ" />
-                  </span>
-                </div>
-                <div className="border border-white/20 bg-black p-5 sm:p-6 flex flex-col justify-between space-y-4 rounded-none min-h-[160px]">
-                  <div>
-                    <h3 className="text-lg sm:text-xl font-black uppercase text-white font-display border-b border-white/10 pb-2 mb-3">
-                      <GlossaryText text="ПРОДУКТ (WIN)" />
-                    </h3>
-                    <p className="text-sm sm:text-base text-zinc-200 font-bold leading-relaxed">
-                      <GlossaryText text="Учебный MVP: cloud-hosted web app (VPS, Docker). Подписки и мультитенантности нет — это этап коммерческого SaaS. Затраты на DeepSeek API предсказуемы." />
-                    </p>
-                  </div>
-                  <span className="font-mono text-[9px] text-zinc-400 uppercase font-black tracking-widest">
-                    <GlossaryText text="CLOUD HOSTED // MVP SCOPE" />
-                  </span>
-                </div>
+                ))}
               </div>
               <div className="bg-[#FF4A22] text-white p-3 sm:p-4 border-2 border-[#FF4A22] rounded-none">
                 <p className="font-mono text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-wider leading-snug">
