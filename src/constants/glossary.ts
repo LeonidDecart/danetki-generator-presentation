@@ -76,7 +76,7 @@ export const GLOSSARY: Record<string, string> = {
   "B2B": "Business-to-Business — продукт для бизнес-клиентов",
   "Notion": "Облачный редактор — пример полноценного коммерческого веб-сервиса",
   "Slack": "Корпоративный мессенджер — пример крупного облачного продукта",
-  "LLM": "Large Language Model — большая языковая модель (DeepSeek, GPT и т.п.)",
+  "LLM": "Large Language Model — большая языковая модель",
   "API": "Application Programming Interface — программный интерфейс для доступа к сервису",
   "VPS": "Virtual Private Server — виртуальный сервер в облаке",
   "DLQ": "Dead Letter Queue — очередь необработанных «битых» сообщений",

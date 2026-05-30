@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu, TrendingUp, Server, Wallet, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize, Minimize, Globe, Gauge, ShieldBan, Check, Database, Cpu, TrendingUp, Server, Wallet, Users, Code2 } from "lucide-react";
 
 import Heading from "./components/Heading";
 import Text from "./components/Text";
@@ -379,10 +379,10 @@ export default function App() {
                         </div>
                         <div className="pt-2">
                           <div className="text-2xl sm:text-3xl font-mono font-black text-white tracking-tighter leading-none">
-                            <GlossaryText text={kpi.value} />
+                            {kpi.value}
                           </div>
                           <p className="text-[10px] sm:text-xs text-zinc-400 font-bold mt-1 uppercase tracking-wide">
-                            <GlossaryText text={kpi.sub} />
+                            {kpi.sub}
                           </p>
                         </div>
                         <span className="font-mono text-[7px] sm:text-[8px] text-[#FF4A22]/80 uppercase tracking-widest font-black mt-3">
@@ -714,7 +714,7 @@ export default function App() {
                   <GlossaryText text="ЭКОНОМИКА: ДОХОДЫ vs ЗАТРАТЫ" />
                 </Heading>
                 <div className="flex flex-wrap gap-1.5">
-                  {["MARGIN 80%", "BREAKEVEN: 2 CL", "COGS ~2K", "SUB 990 ₽"].map((badge) => (
+                  {["MARGIN 80%", "BREAKEVEN: 2 CL", "OPEX ~2K", "SUB 990 ₽"].map((badge) => (
                     <span
                       key={badge}
                       className="font-mono text-[7px] sm:text-[8px] font-black uppercase tracking-widest px-2 py-0.5 border border-[#FF4A22]/40 text-[#FF4A22] bg-[#FF4A22]/10"
@@ -740,9 +740,9 @@ export default function App() {
                       },
                       {
                         icon: Server,
-                        label: "COGS",
+                        label: "OPEX",
                         value: "~2 000 ₽",
-                        sub: "затраты / месяц",
+                        sub: "инфра / месяц",
                         status: "VPS + DEEPSEEK // ON",
                       },
                       {
@@ -766,10 +766,10 @@ export default function App() {
                         </div>
                         <div className="pt-2">
                           <div className="text-2xl sm:text-3xl font-mono font-black text-white tracking-tighter leading-none">
-                            <GlossaryText text={kpi.value} />
+                            {kpi.value}
                           </div>
                           <p className="text-[10px] sm:text-xs text-zinc-400 font-bold mt-1 uppercase tracking-wide">
-                            <GlossaryText text={kpi.sub} />
+                            {kpi.sub}
                           </p>
                         </div>
                         <span className="font-mono text-[7px] sm:text-[8px] text-[#FF4A22]/80 uppercase tracking-widest font-black mt-3">
@@ -779,7 +779,7 @@ export default function App() {
                     ))}
                   </div>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                     <div className="border border-white/15 bg-black p-4 rounded-none">
                       <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
                         // CLIENT P&L
@@ -807,13 +807,13 @@ export default function App() {
 
                     <div className="border border-white/15 bg-black p-4 rounded-none">
                       <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest block mb-3">
-                        // PRODUCT COSTS
+                        // OPEX (ИНФРА)
                       </span>
                       <div className="space-y-2">
                         {[
                           { val: "~1 200 ₽", label: "VPS + DOCKER", width: "w-[60%]" },
                           { val: "~800 ₽", label: "DEEPSEEK API", width: "w-[40%]" },
-                          { val: "~2 000 ₽", label: "ИТОГО COGS", width: "w-full" },
+                          { val: "~2 000 ₽", label: "ИТОГО / МЕС", width: "w-full" },
                         ].map((row) => (
                           <div key={row.label} className="space-y-1">
                             <div className="flex items-center justify-between">
@@ -831,7 +831,39 @@ export default function App() {
                         ))}
                       </div>
                       <p className="font-mono text-[7px] sm:text-[8px] text-zinc-600 uppercase tracking-widest mt-3">
-                        INFRA + INFERENCE = PREDICTABLE COGS
+                        INFRA + INFERENCE
+                      </p>
+                    </div>
+
+                    <div className="border border-[#FF4A22]/30 bg-[#111111] p-4 rounded-none">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="font-mono text-[8px] sm:text-[9px] font-black text-[#FF4A22] uppercase tracking-widest">
+                          // DEV & ФОТ
+                        </span>
+                        <Code2 className="w-3.5 h-3.5 text-[#FF4A22]" strokeWidth={2.5} />
+                      </div>
+                      <div className="space-y-2">
+                        {[
+                          { val: "~400 000 ₽", label: "РАЗРАБОТКА MVP", note: "единоразово, 5 dev × ~2 мес" },
+                          { val: "~17 000 ₽", label: "АМОРТ. / МЕС", note: "400k ÷ 24 мес" },
+                          { val: "~80 000 ₽", label: "ФОТ КОМАНДЫ", note: "5 чел., part-time / мес" },
+                          { val: "~97 000 ₽", label: "ИТОГО DEV / МЕС", note: "амортизация + зарплаты", accent: true },
+                        ].map((row) => (
+                          <div key={row.label} className="flex items-start justify-between gap-2 border-b border-white/10 pb-2 last:border-0 last:pb-0">
+                            <div>
+                              <span className="font-mono text-[8px] sm:text-[9px] font-black text-zinc-500 uppercase tracking-widest block">
+                                {row.label}
+                              </span>
+                              <span className="font-mono text-[7px] text-zinc-600 uppercase tracking-wide">{row.note}</span>
+                            </div>
+                            <span className={`font-mono text-xs sm:text-sm font-black tracking-tighter shrink-0 ${row.accent ? "text-[#FF4A22]" : "text-white"}`}>
+                              {row.val}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                      <p className="font-mono text-[7px] sm:text-[8px] text-zinc-600 uppercase tracking-widest mt-3">
+                        CAPEX + PAYROLL // TEAM OF 5
                       </p>
                     </div>
                   </div>
