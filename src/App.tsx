@@ -216,24 +216,24 @@ export default function App() {
                   <GlossaryText text="// COMPETITIVE EDGE" />
                 </span>
                 <Heading level={2} className="text-white font-black tracking-tighter text-2xl sm:text-3xl md:text-4xl">
-                  СКРЫТОЕ ПРЕИМУЩЕСТВО
+                  <GlossaryText text="WIN-WIN РЕШЕНИЕ: ЭКОНОМИКА КОНТЕНТА" />
                 </Heading>
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch">
                 <div className="border border-zinc-800 bg-[#0a0a0a] p-5 sm:p-6 md:p-8 flex flex-col justify-center space-y-4 rounded-none opacity-60 min-h-[200px]">
-                  <h3 className="text-base sm:text-lg md:text-xl font-black uppercase text-zinc-500 tracking-tight">
-                    ОБЫЧНЫЙ ПОДХОД (ЧАТ-БОТЫ)
+                  <h3 className="text-base sm:text-lg md:text-xl font-black uppercase text-zinc-500 tracking-tight leading-snug">
+                    ФИЗИЧЕСКИЙ ПОТОЛОК РОСТА (РУТИНА)
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-600 font-bold leading-relaxed">
-                    <GlossaryText text="Ручной поиск статей. Копипаст в нейросеть. Ошибки контекста. Необходимость придумывать длинные промпты и вручную проверять факты." />
+                    Создание 1 качественного поста занимает до 3 часов (поиск, фильтрация, адаптация). Контент-мейкер работает как грузчик. Из-за нехватки времени канал публикует мало постов, охваты падают, автор теряет потенциальные деньги с продажи рекламы.
                   </p>
                 </div>
                 <div className="border-2 border-[#FF4A22] bg-black p-5 sm:p-6 md:p-8 flex flex-col justify-center space-y-4 rounded-none min-h-[200px]">
-                  <h3 className="text-base sm:text-lg md:text-xl font-black uppercase text-white tracking-tight">
-                    НАШ ОБЛАЧНЫЙ КОНВЕЙЕР
+                  <h3 className="text-base sm:text-lg md:text-xl font-black uppercase text-white tracking-tight leading-snug">
+                    АВТОМАТИЗАЦИЯ ДОХОДА (МАСШТАБИРОВАНИЕ)
                   </h3>
                   <p className="text-xs sm:text-sm text-zinc-200 font-bold leading-relaxed">
-                    <GlossaryText text="Zero-prompting. 1 клик в web-панели. Парсер, оркестрация и JSON-выдача на VPS. Облачная доставка: пользователь не ставит софт — только заходит на сайт." />
+                    <GlossaryText text="Время на создание 1 поста сокращается до 5 секунд. Наш сервис превращает автора из писателя в редактора. Пользователь может вести 5 каналов вместо одного, кратно увеличивая рекламную выручку. Подписка 990 ₽ окупается за 1 проданный рекламный пост." />
                   </p>
                 </div>
               </div>
