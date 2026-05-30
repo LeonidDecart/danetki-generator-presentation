@@ -744,7 +744,7 @@ export default function App() {
               // КОМАНДА ПРОЕКТА
             </span>
             <p className="text-[11px] text-zinc-400 font-sans font-medium tracking-tight">
-              Симоненко Леонид, Костюк Степан, Никита, Расул, Александр | ПрИ-301/302
+              Костюк Степан, Алиев Расул, Аблин Александр, Голубев Никита, Симоненко Леонид | ПрИ-301/302
             </p>
           </div>
           <div className="flex items-stretch gap-2 self-end">
